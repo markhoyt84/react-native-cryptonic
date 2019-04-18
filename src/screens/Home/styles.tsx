@@ -4,9 +4,9 @@ const styles: any = StyleSheet.create({
     container: {
         backgroundColor: "#FBFAFA",
     },
-    row: {
+    loadingIndicator: {
         flex: 1,
-        alignItems: "center",
+        marginTop: 100
     }
 });
 export default styles;

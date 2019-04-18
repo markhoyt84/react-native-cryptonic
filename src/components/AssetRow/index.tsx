@@ -30,7 +30,7 @@ class AssetRow extends React.Component<Props, State> {
         };
     }
 
-    _handleIndexChange = (index) => {
+    _handleIndexChange = (index: number) => {
         this.setState({
             ...this.state,
             selectedIndex: index,
@@ -42,17 +42,19 @@ class AssetRow extends React.Component<Props, State> {
         const recentTradeData = this.props.recentTradeData || [];
         const viewingTradesForAssetName = this.props.viewingCurrentAssetTrades;
         const { selectedIndex } = this.state;
+
         let isOpen = false;
         let currentAsset:any;
         let currentAssetMarketData:any;
         let tradablePairs:any;
-        let lastTwentyFiveTradeValues = recentTradeData.map((trade, i) => { return trade[0]});
+        let lastTwentyFiveTradeValues = recentTradeData.map((trade) => { return trade[0]});
         if (currentAssetSet) {
             tradablePairs = Object.keys(currentAssetSet);
             currentAsset = currentAssetSet[tradablePairs[selectedIndex]];
             currentAssetMarketData = currentAsset.marketData;
             isOpen = (viewingTradesForAssetName == tradablePairs[selectedIndex]);
         }
+
         return (
             <View style={styles.container }>
                 <Text adjustsFontSizeToFit style={styles.assetLabel}>
@@ -71,9 +73,12 @@ class AssetRow extends React.Component<Props, State> {
                     onTabPress={this._handleIndexChange}
                 />
                 }
-                <Button title={"View Recent Trades"} onPress={() => {
-                    this.props.loadRecentTradeData(tradablePairs[selectedIndex]);
-                }}/>
+                <Button
+                    title={"View Recent Trades"}
+                    onPress={() => {
+                        this.props.loadRecentTradeData(tradablePairs[selectedIndex]);
+                    }}
+                />
                 <View style={isOpen ? styles.viewChartOpen : styles.viewChartClosed}>
                     {recentTradeData.length == 0 &&
                         <ActivityIndicator size='large'/>
@@ -86,12 +91,12 @@ class AssetRow extends React.Component<Props, State> {
                                 data: lastTwentyFiveTradeValues
                             }]
                         }}
-                        width={Dimensions.get('window').width - 20} // from react-native
+                        width={Dimensions.get('window').width - 20}
                         height={220}
                         yAxisLabel={'$'}
                         chartConfig={{
                             backgroundColor: '#000000',
-                            decimalPlaces: 2, // optional, defaults to 2dp
+                            decimalPlaces: 2,
                             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                             style: {
                                 borderRadius: 16

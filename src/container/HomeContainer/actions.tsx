@@ -1,4 +1,5 @@
 import { getAllAssets, getTickerInformationForAssets, getRecentTradesForAssetWithName } from "./services";
+import {TradeableAsset} from "../../interfaces/tradeableAsset";
 
 export function assetsAreLoading(bool: boolean) {
     console.log("All Assets Loading");
@@ -19,10 +20,9 @@ export function getAssetsFailure(error: Error) {
         error
     };
 }
-export function assetTradesAreLoading(bool: boolean, assetname: string) {
+export function assetTradesAreLoading(assetname: string) {
     return {
         type: "ASSET_TRADES_ARE_LOADING",
-        isLoading: bool,
         assetName: assetname
     };
 }
@@ -40,7 +40,7 @@ export function getAssetTradesFailure(error: Error) {
 }
 
 export function fetchAllAssets() {
-    return dispatch => {
+    return (dispatch:Function) => {
         dispatch(assetsAreLoading(true));
         getAllAssets()
             .then(
@@ -53,10 +53,10 @@ export function fetchAllAssets() {
     };
 }
 
-export function fetchTickerInformation(fromAssets:object) {
+export function fetchTickerInformation(fromAssets: {string: TradeableAsset}) {
     const assetNames = Object.keys(fromAssets);
     const commaDelimitedAssetNames = assetNames.join(",");
-    return dispatch => {
+    return (dispatch:Function) => {
         getTickerInformationForAssets(commaDelimitedAssetNames)
             .then(
                 response => {
@@ -69,8 +69,8 @@ export function fetchTickerInformation(fromAssets:object) {
 }
 
 export function fetchRecentTradesForAssetWithName(assetName:string) {
-    return dispatch => {
-        dispatch(assetTradesAreLoading(true, assetName));
+    return (dispatch:Function) => {
+        dispatch(assetTradesAreLoading(assetName));
         getRecentTradesForAssetWithName(assetName)
             .then(
                 response => {
@@ -89,18 +89,17 @@ export function fetchRecentTradesForAssetWithName(assetName:string) {
 }
 
 
-function createAssetLookUpTable(fromAssets: object) {
+function createAssetLookUpTable(fromAssets: {string: TradeableAsset}) {
     const assetNames = Object.keys(fromAssets);
     let assetGroups = {};
     for (let i = 0; i < assetNames.length; i++) {
         if (assetNames[i].indexOf(".") == -1) {
-            let currentGroupName = fromAssets[assetNames[i]].base;
+            let currentGroupName:string = fromAssets[assetNames[i]].base;
             let currentGroup = assetGroups[currentGroupName];
             if (currentGroup) {
                 currentGroup[assetNames[i]] = fromAssets[assetNames[i]];
             } else {
-                console.log("Create *********** " + i);
-                let newObject = new Object();
+                let newObject = {};
                 newObject[assetNames[i]] = fromAssets[assetNames[i]];
                 assetGroups[currentGroupName] = newObject;
             }
@@ -110,11 +109,9 @@ function createAssetLookUpTable(fromAssets: object) {
 }
 
 
-function mapAssetInfoToMarketData(fromAssets: object, marketData: object) {
+function mapAssetInfoToMarketData(fromAssets: {string: TradeableAsset}, marketData: object) {
     const assetNames = Object.keys(fromAssets);
-    let assetGroups = {};
     for (let i = 0; i < assetNames.length; i++) {
-        console.log(JSON.stringify(marketData[assetNames[i]]));
         fromAssets[assetNames[i]].marketData = marketData[assetNames[i]];
     }
     return createAssetLookUpTable(fromAssets);

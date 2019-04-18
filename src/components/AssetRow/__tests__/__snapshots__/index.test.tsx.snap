@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FBFAFA",
+      "padding": 10,
+    }
+  }
+>
+  <Text
+    adjustsFontSizeToFit={true}
+    style={
+      Object {
+        "fontSize": 20,
+        "paddingBottom": 10,
+        "paddingTop": 10,
+      }
+    }
+  >
+    Asset Name: 
+    XXRP
+  </Text>
+  <Text
+    style={
+      Object {
+        "paddingBottom": 5,
+        "paddingTop": 5,
+      }
+    }
+  >
+    CurrentTradingPair: 
+    XXRPXXBT
+  </Text>
+  <Text
+    style={
+      Object {
+        "paddingBottom": 5,
+        "paddingTop": 5,
+      }
+    }
+  >
+    Opening Price: $
+    0.000064220
+  </Text>
+  <View
+    removeClippedSubviews={false}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "flexDirection": "row",
+        },
+        Object {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="XXRPXXBT"
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#0076FF",
+          "borderBottomLeftRadius": 5,
+          "borderColor": "#0076FF",
+          "borderRightWidth": 1,
+          "borderTopLeftRadius": 5,
+          "borderWidth": 1,
+          "flex": 1,
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingVertical": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#0076FF",
+              },
+              Object {},
+              Array [
+                Object {
+                  "color": "white",
+                },
+                Object {},
+              ],
+            ]
+          }
+        >
+          XXRPXXBT
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityLabel="XXRPZCAD"
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "borderBottomRightRadius": 5,
+          "borderColor": "#0076FF",
+          "borderLeftWidth": 0,
+          "borderTopRightRadius": 5,
+          "borderWidth": 1,
+          "flex": 1,
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingVertical": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#0076FF",
+              },
+              Object {},
+              Object {},
+            ]
+          }
+        >
+          XXRPZCAD
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    accessibilityRole="button"
+    accessibilityStates={Array []}
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "padding": 8,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        View Recent Trades
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="large"
+    />
+  </View>
+</View>
+`;

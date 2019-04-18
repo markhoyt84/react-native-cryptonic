@@ -7,15 +7,16 @@ import {
     Body,
     List
 } from "native-base";
+import { ActivityIndicator } from 'react-native';
 
 import styles from "./styles";
 import AssetRow from "../../components/AssetRow";
 export interface Props {
-    navigation: any;
     assets: any;
     viewingCurrentAssetTrades: string;
     recentTradeData: [];
     loadRecentTradeDataForKeyPair: Function;
+    loadingAssets: boolean;
 }
 export interface State {}
 class Home extends React.Component<Props, State> {
@@ -25,8 +26,6 @@ class Home extends React.Component<Props, State> {
     };
 
     render() {
-        console.log("*******************");
-        console.log(this.props);
         const assetKeys = Object.keys(this.props.assets);
         return (
             <Container style={styles.container}>
@@ -36,9 +35,21 @@ class Home extends React.Component<Props, State> {
                     </Body>
                 </Header>
                 <Content>
+                    { this.props.loadingAssets &&
+                    <ActivityIndicator
+                        size='large'
+                        style={styles.loadingIndicator}
+                    />
+                    }
                     <List>
                         {assetKeys.map((item, i) => (
-                            <AssetRow asset={this.props.assets[item]} key={item} loadRecentTradeData={this._loadRecentTradeData} recentTradeData={this.props.recentTradeData} viewingCurrentAssetTrades={this.props.viewingCurrentAssetTrades}/>
+                            <AssetRow
+                                asset={this.props.assets[item]}
+                                key={item}
+                                loadRecentTradeData={this._loadRecentTradeData}
+                                recentTradeData={this.props.recentTradeData}
+                                viewingCurrentAssetTrades={this.props.viewingCurrentAssetTrades}
+                            />
                         ))}
                     </List>
                 </Content>

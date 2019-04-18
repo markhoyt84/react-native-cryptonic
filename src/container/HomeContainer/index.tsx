@@ -4,14 +4,16 @@ import Home from "../../screens/Home";
 import { fetchAllAssets, fetchRecentTradesForAssetWithName } from "./actions";
 
 export interface Props {
-    navigation: any;
     fetchAllAssets: Function;
     fetchAssetTrades: Function;
-    assets: Object;
+    assets: object;
     recentTradeData: [];
     viewingCurrentAssetTrades: string;
+    isLoading: boolean;
 }
+
 export interface State {}
+
 class HomeContainer extends React.Component<Props, State> {
     componentDidMount() {
         this.props.fetchAllAssets();
@@ -22,22 +24,22 @@ class HomeContainer extends React.Component<Props, State> {
     };
 
     render() {
-        return <Home navigation={this.props.navigation} assets={this.props.assets} loadRecentTradeDataForKeyPair={this._loadRecentTradeData} recentTradeData={this.props.recentTradeData} viewingCurrentAssetTrades={this.props.viewingCurrentAssetTrades}/>;
+        return <Home assets={this.props.assets} loadRecentTradeDataForKeyPair={this._loadRecentTradeData} recentTradeData={this.props.recentTradeData} viewingCurrentAssetTrades={this.props.viewingCurrentAssetTrades} loadingAssets={this.props.isLoading}/>;
     }
 }
 
-export function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch:any) {
     return {
         fetchAllAssets: () => dispatch(fetchAllAssets()),
         fetchAssetTrades: (withAssetName: string) => dispatch(fetchRecentTradesForAssetWithName(withAssetName))
     }
 }
 
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state:any) => ({
     assets: state.homeReducer.assets,
     recentTradeData: state.homeReducer.assetTrades,
     viewingCurrentAssetTrades: state.homeReducer.viewingCurrentAssetTrades,
     isLoading: state.homeReducer.isLoading,
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

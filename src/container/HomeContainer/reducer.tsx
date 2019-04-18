@@ -30,7 +30,6 @@ export default function(state = initialState, action:any) {
     if (action.type === "ASSET_TRADES_ARE_LOADING") {
         return {
             ...state,
-            isLoading: action.isLoading,
             viewingCurrentAssetTrades: action.assetName,
             assetTrades: []
         };
