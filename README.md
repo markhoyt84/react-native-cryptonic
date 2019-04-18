@@ -9,10 +9,10 @@ Each view (or "Page") is separated into it's own folder in the `src/screens` dir
 To get the app up and running on your simulator/machine locally, follow these instructions:
 
 1. Ensure you have:
-    a. Node 10+: `brew install node` NPM will be installed with node
-    b. Watchman: `brew install watchman`
-    c. Expo CLI: `npm install -g expo-cli`
-    d. React Native command line interface: `npm install -g react-native-cli`
+    a. Node 10+: `brew install node` NPM will be installed with node\
+    b. Watchman: `brew install watchman`\
+    c. Expo CLI: `npm install -g expo-cli`\
+    d. React Native command line interface: `npm install -g react-native-cli`\
     e. Xcode: Via Mac App Store
 2. Clone this repository
 3. Run `npm install` in the root directory.
