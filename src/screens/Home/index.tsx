@@ -4,49 +4,41 @@ import {
     Header,
     Title,
     Content,
-    Text,
-    Button,
-    Icon,
-    Left,
     Body,
-    Right,
-    List,
-    ListItem
+    List
 } from "native-base";
 
 import styles from "./styles";
+import AssetRow from "../../components/AssetRow";
 export interface Props {
     navigation: any;
     assets: any;
+    viewingCurrentAssetTrades: string;
+    recentTradeData: [];
+    loadRecentTradeDataForKeyPair: Function;
 }
 export interface State {}
 class Home extends React.Component<Props, State> {
+
+    _loadRecentTradeData = (forKeyPairName:string) => {
+        this.props.loadRecentTradeDataForKeyPair(forKeyPairName);
+    };
+
     render() {
         console.log("*******************");
         console.log(this.props);
-        alert(this.props);
         const assetKeys = Object.keys(this.props.assets);
         return (
             <Container style={styles.container}>
-                <Header>
+                <Header style={styles.header}>
                     <Body>
-                    <Title>Home</Title>
+                    <Title>Cryptonic Markets</Title>
                     </Body>
-                    <Right />
                 </Header>
                 <Content>
                     <List>
                         {assetKeys.map((item, i) => (
-                            <ListItem
-                                key={i}
-                                // onPress={() =>
-                                //     // this.props.navigation.navigate("BlankPage", {
-                                //     //     name: { i }
-                                //     // })
-                                // }
-                            >
-                                <Text>{JSON.stringify(this.props.assets[item])}</Text>
-                            </ListItem>
+                            <AssetRow asset={this.props.assets[item]} key={item} loadRecentTradeData={this._loadRecentTradeData} recentTradeData={this.props.recentTradeData} viewingCurrentAssetTrades={this.props.viewingCurrentAssetTrades}/>
                         ))}
                     </List>
                 </Content>

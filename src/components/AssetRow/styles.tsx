@@ -2,19 +2,23 @@ import { StyleSheet } from "react-native";
 
 const styles: any = StyleSheet.create({
     container: {
+        padding: 10,
         backgroundColor: "#FBFAFA",
     },
-    row: {
-        flex: 1,
-        alignItems: "center",
-    },
-    text: {
+    assetLabel: {
         fontSize: 20,
-        marginBottom: 15,
-        alignItems: "center",
+        paddingTop: 10,
+        paddingBottom: 10
     },
-    mt: {
-        marginTop: 18,
+    descriptionLabel: {
+        paddingTop: 5,
+        paddingBottom: 5
     },
+    viewChartOpen: {
+        display: 'flex'
+    },
+    viewChartClosed: {
+        display: 'none'
+    }
 });
 export default styles;
