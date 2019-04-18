@@ -1,7 +1,7 @@
-const baseURL = "https://api.kraken.com/0/public";
+import Config from 'react-native-config'
 
 export const AppConstants = {
-    assetPairs: baseURL + "/AssetPairs",
-    ticker: baseURL + "/Ticker?pair=",
-    trades: baseURL + "/Trades?pair="
+    assetPairs: Config.API_URL + "/AssetPairs",
+    ticker: Config.API_URL + "/Ticker?pair=",
+    trades: Config.API_URL + "/Trades?pair="
 };
