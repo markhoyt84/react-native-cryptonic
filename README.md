@@ -15,10 +15,11 @@ To get the app up and running on your simulator/machine locally, follow these in
     d. React Native command line interface: `npm install -g react-native-cli`\
     e. Xcode: Via Mac App Store
 2. Clone this repository
-3. Run `npm install` in the root directory.
+3. Run `npm install` in the root directory
 4. For iOS:
     a. Within the root directory run `react-native run-ios` this will launch a simulator with live-reload enabled except on native components
     b. Open ios/ReactNativeCryptonic.xcodeproj in Xcode and run the project like any other
 5. For Android
-    a. Have an Android emulator running (quickest way to get started), or a device connected.
+    a. Have an Android emulator running (quickest way to get started), or a device connected
     b. Within the root directory run `react-native run-android`
+6. Create .env file in root directory and add `API_URL=XXXXXXXXX` with the correct api url for fetching the data
